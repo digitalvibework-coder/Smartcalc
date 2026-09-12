@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Calculator Hub - All-in-One Suite</title>
+    <title>Smart Calculator Hub - Professional Suite</title>
     <style>
         * {
             box-sizing: border-box;
@@ -12,64 +12,68 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background: linear-gradient(135deg, #0f172a 1e3c72 0%, #1e293b 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
+            padding: 30px 20px;
             color: #fff;
         }
         header {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
         }
         header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            letter-spacing: 0.5px;
         }
         header p {
-            font-size: 0.95rem;
-            opacity: 0.8;
+            font-size: 1.05rem;
+            opacity: 0.85;
         }
+        /* Wide Professional Hub Container */
         .hub-container {
             background: #ffffff;
             color: #333;
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
             width: 100%;
-            max-width: 450px;
+            max-width: 750px;
         }
+        /* Grid Layout for 12 Tabs (4 columns x 3 rows) */
         .nav-tabs {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
             background: #f1f5f9;
-            padding: 6px;
-            border-radius: 10px;
-            max-height: 180px;
-            overflow-y: auto;
+            padding: 10px;
+            border-radius: 12px;
         }
         .nav-tab {
-            padding: 8px 4px;
+            padding: 12px 8px;
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
-            border-radius: 6px;
+            border-radius: 8px;
             border: none;
             background: transparent;
             color: #475569;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
+        }
+        .nav-tab:hover {
+            background: #e2e8f0;
+            color: #1e293b;
         }
         .nav-tab.active {
             background: #2563eb;
             color: #fff;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
         }
         .calculator-section {
             display: none;
@@ -77,29 +81,33 @@
         .calculator-section.active {
             display: block;
         }
-        /* Standard Calculator */
+        /* Standard Calculator Inside Wide View */
+        .std-wrapper {
+            max-width: 400px;
+            margin: 0 auto;
+        }
         #display {
             width: 100%;
-            height: 55px;
+            height: 60px;
             background: #0f172a;
             color: #fff;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             text-align: right;
-            padding: 10px;
+            padding: 12px;
             border: none;
-            border-radius: 8px;
-            margin-bottom: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
         }
         .buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+            gap: 10px;
         }
         button.calc-btn {
-            padding: 12px;
-            font-size: 1rem;
+            padding: 14px;
+            font-size: 1.1rem;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             background: #f1f5f9;
             color: #334155;
@@ -114,48 +122,56 @@
         button.clear { background: #ef4444; color: white; }
         button.clear:hover { background: #dc2626; }
 
-        /* Utility Forms */
+        /* Utility Forms Grid for Wide Screen */
+        .util-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .util-full {
+            grid-column: span 2;
+        }
         .util-group {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
         .util-group label {
             display: block;
-            font-size: 0.85rem;
-            margin-bottom: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
             font-weight: 600;
             color: #334155;
         }
         .util-group input, .util-group select {
             width: 100%;
-            padding: 9px;
+            padding: 11px;
             border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 0.95rem;
+            border-radius: 8px;
+            font-size: 1rem;
         }
         .util-btn {
             width: 100%;
-            padding: 11px;
+            padding: 12px;
             background: #2563eb;
             color: white;
             border: none;
-            border-radius: 6px;
-            font-size: 0.95rem;
+            border-radius: 8px;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 4px;
+            margin-top: 5px;
             transition: background 0.2s;
         }
         .util-btn:hover { background: #1d4ed8; }
         .result-box {
-            margin-top: 12px;
-            padding: 10px;
+            margin-top: 15px;
+            padding: 14px;
             background: #f8fafc;
-            border-radius: 6px;
+            border-radius: 8px;
             text-align: center;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: #0f172a;
-            border: 1px dashed #2563eb;
+            border: 2px dashed #2563eb;
         }
     </style>
 </head>
@@ -163,209 +179,288 @@
 
     <header>
         <h1>Smart Calculator Hub</h1>
-        <p>11-in-1 Advanced Professional Calculation Suite</p>
+        <p>12-in-1 Professional Multi-Utility Calculation Suite</p>
     </header>
 
     <div class="hub-container">
-        <!-- Navigation Tabs (11 Calculators) -->
+        <!-- Navigation Tabs (12 Calculators: Exactly 4x3 Grid) -->
         <div class="nav-tabs">
             <button class="nav-tab active" onclick="switchTab('standard')">Standard</button>
             <button class="nav-tab" onclick="switchTab('percentage')">Percentage</button>
             <button class="nav-tab" onclick="switchTab('age')">Age</button>
             <button class="nav-tab" onclick="switchTab('bmi')">BMI</button>
+            
             <button class="nav-tab" onclick="switchTab('emi')">EMI / Loan</button>
             <button class="nav-tab" onclick="switchTab('temp')">Temperature</button>
             <button class="nav-tab" onclick="switchTab('currency')">Currency</button>
             <button class="nav-tab" onclick="switchTab('gold')">Gold Value</button>
+            
             <button class="nav-tab" onclick="switchTab('discount')">Discount</button>
             <button class="nav-tab" onclick="switchTab('fuel')">Fuel Cost</button>
             <button class="nav-tab" onclick="switchTab('interest')">Interest</button>
+            <button class="nav-tab" onclick="switchTab('gst')">GST Calculator</button>
         </div>
 
         <!-- 1. Standard Calculator -->
         <div id="standard" class="calculator-section active">
-            <input type="text" id="display" readonly>
-            <div class="buttons">
-                <button class="calc-btn clear" onclick="clearDisplay()">C</button>
-                <button class="calc-btn operator" onclick="appendValue('/')">/</button>
-                <button class="calc-btn operator" onclick="appendValue('*')">*</button>
-                <button class="calc-btn operator" onclick="appendValue('-')">-</button>
-                
-                <button class="calc-btn" onclick="appendValue('7')">7</button>
-                <button class="calc-btn" onclick="appendValue('8')">8</button>
-                <button class="calc-btn" onclick="appendValue('9')">9</button>
-                <button class="calc-btn operator" onclick="appendValue('+')">+</button>
-                
-                <button class="calc-btn" onclick="appendValue('4')">4</button>
-                <button class="calc-btn" onclick="appendValue('5')">5</button>
-                <button class="calc-btn" onclick="appendValue('6')">6</button>
-                <button class="calc-btn" onclick="appendValue('1')">1</button>
-                
-                <button class="calc-btn" onclick="appendValue('2')">2</button>
-                <button class="calc-btn" onclick="appendValue('3')">3</button>
-                <button class="calc-btn" onclick="appendValue('0')">0</button>
-                <button class="calc-btn" onclick="appendValue('.')">.</button>
-                
-                <button class="calc-btn equal" onclick="calculate()">=</button>
+            <div class="std-wrapper">
+                <input type="text" id="display" readonly>
+                <div class="buttons">
+                    <button class="calc-btn clear" onclick="clearDisplay()">C</button>
+                    <button class="calc-btn operator" onclick="appendValue('/')">/</button>
+                    <button class="calc-btn operator" onclick="appendValue('*')">*</button>
+                    <button class="calc-btn operator" onclick="appendValue('-')">-</button>
+                    
+                    <button class="calc-btn" onclick="appendValue('7')">7</button>
+                    <button class="calc-btn" onclick="appendValue('8')">8</button>
+                    <button class="calc-btn" onclick="appendValue('9')">9</button>
+                    <button class="calc-btn operator" onclick="appendValue('+')">+</button>
+                    
+                    <button class="calc-btn" onclick="appendValue('4')">4</button>
+                    <button class="calc-btn" onclick="appendValue('5')">5</button>
+                    <button class="calc-btn" onclick="appendValue('6')">6</button>
+                    <button class="calc-btn" onclick="appendValue('1')">1</button>
+                    
+                    <button class="calc-btn" onclick="appendValue('2')">2</button>
+                    <button class="calc-btn" onclick="appendValue('3')">3</button>
+                    <button class="calc-btn" onclick="appendValue('0')">0</button>
+                    <button class="calc-btn" onclick="appendValue('.')">.</button>
+                    
+                    <button class="calc-btn equal" onclick="calculate()">=</button>
+                </div>
             </div>
         </div>
 
         <!-- 2. Percentage Calculator -->
         <div id="percentage" class="calculator-section">
-            <div class="util-group">
-                <label>Total Value</label>
-                <input type="number" id="percTotal" placeholder="e.g., 1000">
+            <div class="util-grid">
+                <div class="util-group">
+                    <label>Total Value</label>
+                    <input type="number" id="percTotal" placeholder="e.g., 1000">
+                </div>
+                <div class="util-group">
+                    <label>Percentage (%)</label>
+                    <input type="number" id="percValue" placeholder="e.g., 18">
+                </div>
+                <div class="util-full">
+                    <button class="util-btn" onclick="calcPercentage()">Calculate Percentage</button>
+                    <div class="result-box" id="percResult">Result: --</div>
+                </div>
             </div>
-            <div class="util-group">
-                <label>Percentage (%)</label>
-                <input type="number" id="percValue" placeholder="e.g., 18">
-            </div>
-            <button class="util-btn" onclick="calcPercentage()">Calculate</button>
-            <div class="result-box" id="percResult">Result: --</div>
         </div>
 
         <!-- 3. Age Calculator -->
         <div id="age" class="calculator-section">
-            <div class="util-group">
-                <label>Date of Birth</label>
-                <input type="date" id="dob">
+            <div class="util-grid">
+                <div class="util-group util-full">
+                    <label>Date of Birth</label>
+                    <input type="date" id="dob">
+                </div>
+                <div class="util-full">
+                    <button class="util-btn" onclick="calcAge()">Calculate Exact Age</button>
+                    <div class="result-box" id="ageResult">Your Age: --</div>
+                </div>
             </div>
-            <button class="util-btn" onclick="calcAge()">Calculate Age</button>
-            <div class="result-box" id="ageResult">Your Age: --</div>
         </div>
 
         <!-- 4. BMI Calculator -->
         <div id="bmi" class="calculator-section">
-            <div class="util-group">
-                <label>Weight (kg)</label>
-                <input type="number" id="bmiWeight" placeholder="e.g., 70">
+            <div class="util-grid">
+                <div class="util-group">
+                    <label>Weight (kg)</label>
+                    <input type="number" id="bmiWeight" placeholder="e.g., 70">
+                </div>
+                <div class="util-group">
+                    <label>Height (cm)</label>
+                    <input type="number" id="bmiHeight" placeholder="e.g., 170">
+                </div>
+                <div class="util-full">
+                    <button class="util-btn" onclick="calcBMI()">Calculate BMI</button>
+                    <div class="result-box" id="bmiResult">BMI Status: --</div>
+                </div>
             </div>
-            <div class="util-group">
-                <label>Height (cm)</label>
-                <input type="number" id="bmiHeight" placeholder="e.g., 170">
-            </div>
-            <button class="util-btn" onclick="calcBMI()">Calculate BMI</button>
-            <div class="result-box" id="bmiResult">BMI: --</div>
         </div>
 
         <!-- 5. EMI / Loan Calculator -->
         <div id="emi" class="calculator-section">
-            <div class="util-group">
-                <label>Loan Amount (₹)</label>
-                <input type="number" id="loanAmount" placeholder="e.g., 500000">
+            <div class="util-grid">
+                <div class="util-group">
+                    <label>Loan Amount (₹)</label>
+                    <input type="number" id="loanAmount" placeholder="e.g., 500000">
+                </div>
+                <div class="util-group">
+                    <label>Interest Rate (% P.A.)</label>
+                    <input type="number" id="loanInterest" placeholder="e.g., 8.5">
+                </div>
+                <div class="util-group util-full">
+                    <label>Tenure (Months)</label>
+                    <input type="number" id="loanMonths" placeholder="e.g., 12">
+                </div>
+                <div class="util-full">
+                    <button class="util-btn" onclick="calcEMI()">Calculate Monthly EMI</button>
+                    <div class="result-box" id="emiResult">Monthly EMI: --</div>
+                </div>
             </div>
-            <div class="util-group">
-                <label>Interest Rate (% P.A.)</label>
-                <input type="number" id="loanInterest" placeholder="e.g., 8.5">
-            </div>
-            <div class="util-group">
-                <label>Tenure (Months)</label>
-                <input type="number" id="loanMonths" placeholder="e.g., 12">
-            </div>
-            <button class="util-btn" onclick="calcEMI()">Calculate EMI</button>
-            <div class="result-box" id="emiResult">Monthly EMI: --</div>
         </div>
 
         <!-- 6. Temperature Calculator -->
         <div id="temp" class="calculator-section">
-            <div class="util-group">
-                <label>Temperature Value</label>
-                <input type="number" id="tempVal" placeholder="e.g., 98.6">
+            <div class="util-grid">
+                <div class="util-group">
+                    <label>Temperature Value</label>
+                    <input type="number" id="tempVal" placeholder="e.g., 98.6">
+                </div>
+                <div class="util-group">
+                    <label>Conversion Type</label>
+                    <select id="tempType">
+                        <option value="cToF">Celsius to Fahrenheit</option>
+                        <option value="fToC">Fahrenheit to Celsius</option>
+                    </select>
+                </div>
+                <div class="util-full">
+                    <button class="util-btn" onclick="calcTemp()">Convert Temperature</button>
+                    <div class="result-box" id="tempResult">Result: --</div>
+                </div>
             </div>
-            <div class="util-group">
-                <label>Conversion Type</label>
-                <select id="tempType">
-                    <option value="cToF">Celsius to Fahrenheit</option>
-                    <option value="fToC">Fahrenheit to Celsius</option>
-                </select>
-            </div>
-            <button class="util-btn" onclick="calcTemp()">Convert</button>
-            <div class="result-box" id="tempResult">Result: --</div>
         </div>
 
-        <!-- 7. Currency Converter (Multiple Currencies) -->
+        <!-- 7. Universal Currency Converter -->
         <div id="currency" class="calculator-section">
-            <div class="util-group">
-                <label>Amount in INR (₹)</label>
-                <input type="number" id="inrVal" placeholder="e.g., 1000">
+            <div class="util-grid">
+                <div class="util-group">
+                    <label>Amount</label>
+                    <input type="number" id="currAmount" placeholder="e.g., 100">
+                </div>
+                <div class="util-group">
+                    <label>From Currency</label>
+                    <select id="currFrom">
+                        <option value="INR">INR - Indian Rupee (₹)</option>
+                        <option value="USD">USD - US Dollar ($)</option>
+                        <option value="EUR">EUR - Euro (€)</option>
+                        <option value="GBP">GBP - British Pound (£)</option>
+                        <option value="AUD">AUD - Australian Dollar (A$)</option>
+                        <option value="CAD">CAD - Canadian Dollar (C$)</option>
+                    </select>
+                </div>
+                <div class="util-group util-full">
+                    <label>To Currency</label>
+                    <select id="currTo">
+                        <option value="USD">USD - US Dollar ($)</option>
+                        <option value="INR">INR - Indian Rupee (₹)</option>
+                        <option value="EUR">EUR - Euro (€)</option>
+                        <option value="GBP">GBP - British Pound (£)</option>
+                        <option value="AUD">AUD - Australian Dollar (A$)</option>
+                        <option value="CAD">CAD - Canadian Dollar (C$)</option>
+                    </select>
+                </div>
+                <div class="util-full">
+                    <button class="util-btn" onclick="calcUniversalCurrency()">Convert Currency</button>
+                    <div class="result-box" id="currResult">Converted Amount: --</div>
+                </div>
             </div>
-            <div class="util-group">
-                <label>Convert To</label>
-                <select id="currType">
-                    <option value="USD">USD - US Dollar ($)</option>
-                    <option value="EUR">EUR - Euro (€)</option>
-                    <option value="GBP">GBP - British Pound (£)</option>
-                    <option value="AUD">AUD - Australian Dollar (A$)</option>
-                    <option value="CAD">CAD - Canadian Dollar (C$)</option>
-                    <option value="JPY">JPY - Japanese Yen (¥)</option>
-                </select>
-            </div>
-            <button class="util-btn" onclick="calcCurrency()">Convert Currency</button>
-            <div class="result-box" id="currResult">Result: --</div>
         </div>
 
         <!-- 8. Gold Value Estimator -->
         <div id="gold" class="calculator-section">
-            <div class="util-group">
-                <label>Gold Weight (Grams)</label>
-                <input type="number" id="goldGrams" placeholder="e.g., 10">
+            <div class="util-grid">
+                <div class="util-group">
+                    <label>Gold Weight (Grams)</label>
+                    <input type="number" id="goldGrams" placeholder="e.g., 10">
+                </div>
+                <div class="util-group">
+                    <label>Price per 10 Grams (₹)</label>
+                    <input type="number" id="goldPricePer10" value="72000">
+                </div>
+                <div class="util-full">
+                    <button class="util-btn" onclick="calcGold()">Calculate Gold Value</button>
+                    <div class="result-box" id="goldResult">Total Value: --</div>
+                </div>
             </div>
-            <div class="util-group">
-                <label>Price per 10 Grams (₹)</label>
-                <input type="number" id="goldPricePer10" value="72000">
-            </div>
-            <button class="util-btn" onclick="calcGold()">Calculate Value</button>
-            <div class="result-box" id="goldResult">Total Value: --</div>
         </div>
 
         <!-- 9. Discount Calculator -->
         <div id="discount" class="calculator-section">
-            <div class="util-group">
-                <label>Original Price (₹)</label>
-                <input type="number" id="origPrice" placeholder="e.g., 2000">
+            <div class="util-grid">
+                <div class="util-group">
+                    <label>Original Price (₹)</label>
+                    <input type="number" id="origPrice" placeholder="e.g., 2000">
+                </div>
+                <div class="util-group">
+                    <label>Discount Percentage (%)</label>
+                    <input type="number" id="discPercent" placeholder="e.g., 20">
+                </div>
+                <div class="util-full">
+                    <button class="util-btn" onclick="calcDiscount()">Calculate Discount</button>
+                    <div class="result-box" id="discResult">Final Price: --</div>
+                </div>
             </div>
-            <div class="util-group">
-                <label>Discount Percentage (%)</label>
-                <input type="number" id="discPercent" placeholder="e.g., 20">
-            </div>
-            <button class="util-btn" onclick="calcDiscount()">Calculate Savings</button>
-            <div class="result-box" id="discResult">Final Price: --</div>
         </div>
 
         <!-- 10. Fuel Cost / Mileage Calculator -->
         <div id="fuel" class="calculator-section">
-            <div class="util-group">
-                <label>Distance (KM)</label>
-                <input type="number" id="fuelDist" placeholder="e.g., 150">
+            <div class="util-grid">
+                <div class="util-group">
+                    <label>Distance (KM)</label>
+                    <input type="number" id="fuelDist" placeholder="e.g., 150">
+                </div>
+                <div class="util-group">
+                    <label>Mileage (KM/L)</label>
+                    <input type="number" id="fuelMileage" placeholder="e.g., 40">
+                </div>
+                <div class="util-group util-full">
+                    <label>Fuel Price per Liter (₹)</label>
+                    <input type="number" id="fuelPrice" placeholder="e.g., 105">
+                </div>
+                <div class="util-full">
+                    <button class="util-btn" onclick="calcFuel()">Calculate Travel Cost</button>
+                    <div class="result-box" id="fuelResult">Total Cost: --</div>
+                </div>
             </div>
-            <div class="util-group">
-                <label>Mileage (KM/L)</label>
-                <input type="number" id="fuelMileage" placeholder="e.g., 40">
-            </div>
-            <div class="util-group">
-                <label>Fuel Price per Liter (₹)</label>
-                <input type="number" id="fuelPrice" placeholder="e.g., 105">
-            </div>
-            <button class="util-btn" onclick="calcFuel()">Calculate Cost</button>
-            <div class="result-box" id="fuelResult">Total Cost: --</div>
         </div>
 
         <!-- 11. Simple Interest Calculator -->
         <div id="interest" class="calculator-section">
-            <div class="util-group">
-                <label>Principal Amount (₹)</label>
-                <input type="number" id="intPrincipal" placeholder="e.g., 50000">
+            <div class="util-grid">
+                <div class="util-group">
+                    <label>Principal Amount (₹)</label>
+                    <input type="number" id="intPrincipal" placeholder="e.g., 50000">
+                </div>
+                <div class="util-group">
+                    <label>Interest Rate (% P.A.)</label>
+                    <input type="number" id="intRate" placeholder="e.g., 12">
+                </div>
+                <div class="util-group util-full">
+                    <label>Time (Years)</label>
+                    <input type="number" id="intYears" placeholder="e.g., 2">
+                </div>
+                <div class="util-full">
+                    <button class="util-btn" onclick="calcInterest()">Calculate Interest</button>
+                    <div class="result-box" id="intResult">Total Interest: --</div>
+                </div>
             </div>
-            <div class="util-group">
-                <label>Interest Rate (% P.A.)</label>
-                <input type="number" id="intRate" placeholder="e.g., 12">
+        </div>
+
+        <!-- 12. GST Calculator (Trending Addition) -->
+        <div id="gst" class="calculator-section">
+            <div class="util-grid">
+                <div class="util-group">
+                    <label>Initial Amount (₹)</label>
+                    <input type="number" id="gstAmount" placeholder="e.g., 1000">
+                </div>
+                <div class="util-group">
+                    <label>GST Rate (%)</label>
+                    <select id="gstRate">
+                        <option value="5">5% GST</option>
+                        <option value="12">12% GST</option>
+                        <option value="18" selected>18% GST</option>
+                        <option value="28">28% GST</option>
+                    </select>
+                </div>
+                <div class="util-full">
+                    <button class="util-btn" onclick="calcGST()">Calculate GST</button>
+                    <div class="result-box" id="gstResult">Total with GST: --</div>
+                </div>
             </div>
-            <div class="util-group">
-                <label>Time (Years)</label>
-                <input type="number" id="intYears" placeholder="e.g., 2">
-            </div>
-            <button class="util-btn" onclick="calcInterest()">Calculate Interest</button>
-            <div class="result-box" id="intResult">Total Interest: --</div>
         </div>
     </div>
 
@@ -430,14 +525,19 @@
             document.getElementById('tempResult').innerText = `Result: ${res.toFixed(2)}°`;
         }
 
-        function calcCurrency() {
-            let inr = parseFloat(document.getElementById('inrVal').value);
-            let type = document.getElementById('currType').value;
-            if(isNaN(inr)) { document.getElementById('currResult').innerText = "Enter amount"; return; }
-            
-            let rates = { USD: 83.5, EUR: 90.2, GBP: 106.5, AUD: 55.0, CAD: 61.5, JPY: 0.56 };
-            let res = inr / rates[type];
-            document.getElementById('currResult').innerText = `Result: ${res.toFixed(2)} ${type}`;
+        function calcUniversalCurrency() {
+            let amount = parseFloat(document.getElementById('currAmount').value);
+            let from = document.getElementById('currFrom').value;
+            let to = document.getElementById('currTo').value;
+            if(isNaN(amount)) { document.getElementById('currResult').innerText = "Enter valid amount"; return; }
+
+            // Rates relative to USD
+            let ratesToUSD = { USD: 1.0, INR: 83.5, EUR: 0.92, GBP: 0.78, AUD: 1.50, CAD: 1.36 };
+            let amountInUSD = amount / ratesToUSD[from];
+            let finalAmount = amountInUSD * ratesToUSD[to];
+
+            let symbols = { USD: '$', INR: '₹', EUR: '€', GBP: '£', AUD: 'A$', CAD: 'C$' };
+            document.getElementById('currResult').innerText = `Converted: ${symbols[to]}${finalAmount.toFixed(2)} ${to}`;
         }
 
         function calcGold() {
@@ -473,6 +573,15 @@
             if(isNaN(p) || isNaN(r) || isNaN(t)) { document.getElementById('intResult').innerText = "Enter valid inputs"; return; }
             let interest = (p * r * t) / 100;
             document.getElementById('intResult').innerText = `Total Interest: ₹${Math.round(interest).toLocaleString('en-IN')}`;
+        }
+
+        function calcGST() {
+            let amt = parseFloat(document.getElementById('gstAmount').value);
+            let rate = parseFloat(document.getElementById('gstRate').value);
+            if(isNaN(amt)) { document.getElementById('gstResult').innerText = "Enter amount"; return; }
+            let gstAmt = (amt * rate) / 100;
+            let total = amt + gstAmt;
+            document.getElementById('gstResult').innerText = `GST: ₹${gstAmt.toFixed(2)} | Total: ₹${total.toFixed(2)}`;
         }
     </script>
 </body>
